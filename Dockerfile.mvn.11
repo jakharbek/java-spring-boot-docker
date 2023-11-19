@@ -1,0 +1,18 @@
+FROM maven:3.8.6-openjdk-11-slim
+LABEL Author="jakharbek@gmail.com"
+ENV TZ="Asia/Tashkent"
+
+RUN mkdir /app
+COPY src /app/src
+COPY pom.11.xml /app/pom.xml
+WORKDIR /app
+COPY . /app/
+RUN cd /app/
+COPY ojdbc6-12.1.0.2.jar ojdbc6-12.1.0.2.jar
+RUN mvn install:install-file -Dfile=ojdbc6-12.1.0.2.jar -DgroupId=com.oracle  -DartifactId=oracle -Dversion=12.1.0.2 -Dpackaging=jar -DgeneratePom=true
+RUN mvn package
+RUN mvn install
+RUN mkdir /app/lib
+RUN cp /app/target/*.jar /app/lib/application.jar
+WORKDIR /app/lib
+ENTRYPOINT ["java", "-jar", "application.jar"]

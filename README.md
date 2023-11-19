@@ -32,3 +32,16 @@ docker build . -f Dockerfile.mvn.21 -t jakharbek/java-spring-boot-mvn-21
 ```bash
 docker run -it jakharbek/java-spring-boot-mvn-21 sh
 ```
+
+## PUSH
+
+
+```bash
+docker push jakharbek/java-spring-boot-mvn-17
+```
+```bash
+docker push jakharbek/java-spring-boot-mvn-11
+```
+```bash
+docker push jakharbek/java-spring-boot-mvn-21
+```

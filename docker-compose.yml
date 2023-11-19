@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  app-11:
+    container_name: java-spring-boot-11
+    build:
+      context: .
+      dockerfile: Dockerfile.mvn.11
+    restart: always
+  app-17:
+    container_name: java-spring-boot-17
+    build:
+      context: .
+      dockerfile: Dockerfile.mvn.17
+    restart: always
+  app-21:
+    container_name: java-spring-boot-21
+    build:
+      context: .
+      dockerfile: Dockerfile.mvn.21
+    restart: always
